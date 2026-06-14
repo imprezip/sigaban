@@ -1,0 +1,96 @@
+.filter-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+}
+
+.filter-chip {
+  white-space: nowrap;
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.filter-chip:hover {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.filter-chip.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+
+.evak-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 10px;
+  transition: border-color .2s;
+}
+
+.evak-card:hover { border-color: var(--accent) }
+
+.evak-name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.evak-addr {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.evak-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.evak-tag {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 20px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.evak-dist-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.evak-dist {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+}
+
+.evak-btn {
+  font-size: 11px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  background: var(--accent);
+  color: #0B0F0E;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.evak-btn:hover { color: var(--accent); background: #0B0F0E; }

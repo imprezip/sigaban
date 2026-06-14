@@ -1,0 +1,131 @@
+:root {
+  --merah: #E53E3E;
+  --kuning: #D69E2E;
+  --hijau: #276749;
+  --hijau-muda: #38A169;
+  --bg: #0B0F0E;
+  --bg2: #131917;
+  --bg3: #1A2320;
+  --card: #1E2B27;
+  --border: #2A3D37;
+  --text: #E8F0ED;
+  --muted: #8FA89F;
+  --accent: #4ADE80;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+* { -webkit-tap-highlight-color: transparent !important; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.page { display: none; padding-top: 52px; padding-bottom: 68px; min-height: 100vh; }
+.page.active { display: block; }
+
+.page-content { padding: 16px; }
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.leaflet-container { background: #0e1813 !important; }
+
+.custom-popup .leaflet-popup-content-wrapper {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .6);
+  color: var(--text);
+}
+
+.custom-popup .leaflet-popup-tip { background: var(--card); }
+.custom-popup .leaflet-popup-content { margin: 12px 14px; }
+
+.popup-nama {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.popup-addr {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+
+.popup-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+
+.popup-row b { color: var(--text); font-family: var(--font-mono); }
+
+.popup-btn {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  background: var(--accent);
+  color: #0b0f0e;
+  border: none;
+  border-radius: 8px;
+  padding: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  font-family: var(--font-body);
+  text-decoration: none;
+}
+
+.zona-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.zona-tinggi {
+  background: rgba(229,62,62,.2);
+  color: #FC8181;
+  border: 1px solid rgba(229,62,62,.3);
+}
+
+.zona-sedang {
+  background: rgba(214,158,46,.2);
+  color: #F6C353;
+  border: 1px solid rgba(214,158,46,.3);
+}
+
+.zona-rendah {
+  background: rgba(39,103,73,.3);
+  color: #68D391;
+  border: 1px solid rgba(56,161,105,.3);
+}

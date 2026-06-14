@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SiGaBan - Potensi Banjir Jatinangor</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/header-nav.css" />
+  <link rel="stylesheet" href="./css/map.css" />
+  <link rel="stylesheet" href="./css/prediksi.css" />
+  <link rel="stylesheet" href="./css/persiapan.css" />
+  <link rel="stylesheet" href="./css/pengungsian.css" />
+  <link rel="stylesheet" href="./css/kontak.css" />
+  <link rel="icon" type="image/png" href="./data/favicon.png">
+</head>
+
+<body>
+  <header>
+    <div class="logo"><i class="fa-solid fa-house-flood-water"></i> SiGaBan</div>
+    <div class="logo-badge" style="font-size: 9px; padding: 4px 8px;">Titik Lokasi Potensi Banjir</div>
+  </header>
+
+  <div class="page active" id="page-1">
+    <div id="map"></div>
+    <div class="legend-strip">
+      <div class="legend-item"><span>Potensi Banjir:</span></div>
+      <div class="legend-item"><div class="legend-line" style="background:#E53E3E"></div><span>Tinggi</span></div>
+      <div class="legend-item"><div class="legend-line" style="background:#D69E2E"></div><span>Sedang</span></div>
+      <div class="legend-item"><div class="legend-line" style="background:#4ADE80"></div><span>Rendah</span></div>
+      <div class="legend-item"><div style="
+          width:12px;height:12px;border-radius:50%;
+          background:none;border:2px solid #fff;
+          box-shadow:0 0 8px none 2px 4px rgba(0,0,0,.6);
+        "></div></span><span>Lokasi Kos</span></div>
+      <div class="legend-item"><div style="
+          width:12px;height:12px;border-radius:50%;
+          background:rgb(116, 192, 252);border:2px solid #fff;
+          box-shadow:0 0 8px rgb(116, 192, 252,0) 2px 4px rgba(0,0,0,.6);
+        "></div></span><span>Lokasi Saya</span></div>
+    </div>
+    <div class="kos-panel">
+      <h3>Kos-kosan Terdaftar</h3>
+      <div class="kos-list" id="kos-list"></div>
+    </div>
+  </div>
+
+  <div class="page" id="page-2">
+    <div class="page-content">
+      <div class="prediksi-banner">
+        <h2><i class="fa-solid fa-list"></i> Titik Lokasi Potensi Banjir</h2>
+        <p>Berdasarkan analisis data historis: indeks ancaman, kerentanan, dan kapasitas pengungsian tiap desa di Kecamatan Jatinangor. Bukan data real-time.</p>
+        <div class="prediksi-sumber">Sumber: Slamet Sugianto, Analisis Risiko Bencana Banjir Kec. Jatinangor, ITENAS 2022</div>
+      </div>
+
+      <div class="prediksi-toolbar">
+        <div class="prediksi-sort">
+          <span class="prediksi-toolbar-label">Urutkan</span>
+          <select id="prediksi-sort" class="prediksi-select" aria-label="Urutkan daftar kos">
+            <option value="potensi">Potensi Banjir</option>
+            <option value="nama">Nama</option>
+            <option value="harga">Harga</option>
+          </select>
+          <button type="button" class="prediksi-order-btn active" id="prediksi-order-asc">
+            <i class="fa-solid fa-angle-up"></i>
+          </button>
+          <button type="button" class="prediksi-order-btn" id="prediksi-order-desc">
+            <i class="fa-solid fa-angle-down"></i>
+          </button>
+        </div>
+
+        <div class="prediksi-filter-grid">
+          <select id="filter-desa" class="prediksi-select"></select>
+        </div>
+
+        <div class="prediksi-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input id="prediksi-search" type="search" placeholder="Cari kos..." autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="desa-grid" id="desa-grid"></div>
+    </div>
+  </div>
+
+
+  <div class="page" id="page-3">
+    <div class="page-content">
+      <div class="section-title"><i class="fa-solid fa-clipboard-list"></i> Perlengkapan Evakuasi</div>
+      <div class="section-sub">Siapkan sebelum musim hujan tiba. Centang item yang sudah tersedia.</div>
+      <div class="checklist" id="checklist"></div>
+      <div class="toko-title"><i class="fa-solid fa-cart-shopping"></i> Toko Terdekat di Jatinangor</div>
+      <div class="toko-list">
+        <div class="toko-card">
+          <div><div class="toko-name">Indomaret Jatinangor</div><div class="toko-dist">Jl. Raya Jatinangor</div></div>
+          <button class="toko-btn" onclick="window.open('https://maps.app.goo.gl/TjaQijaPsHyccJa46')">Maps</button>
+        </div>
+        <div class="toko-card">
+          <div><div class="toko-name">Alfamart Jatinangor</div><div class="toko-dist">Jl. Raya Jatinangor</div></div>
+          <button class="toko-btn" onclick="window.open('https://maps.app.goo.gl/Tuuvng8n9LyNA5gP9')">Maps</button>
+        </div>
+        <div class="toko-card">
+          <div><div class="toko-name">Pasar Tanjungsari</div><div class="toko-dist">Jl. Raya Cirebon - Bandung</div></div>
+          <button class="toko-btn" onclick="window.open('https://maps.app.goo.gl/cmb39kaasFS4PUd37')">Maps</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-4">
+    <div class="page-content">
+      <div class="section-title"><i class="fa-solid fa-people-group"></i> Lokasi Fasilitas Umum</div>
+      <div class="section-sub">Titik evakuasi aman saat terjadi banjir di Jatinangor.</div>
+      <div class="filter-row">
+        <button class="filter-chip active" onclick="filterEvak(this,'semua')">Semua</button>
+        <button class="filter-chip" onclick="filterEvak(this,'kampus')">Kampus</button>
+        <button class="filter-chip" onclick="filterEvak(this,'rumah sakit')">Rumah Sakit</button>
+        <button class="filter-chip" onclick="filterEvak(this,'tempat ibadah')">Tempat Ibadah</button>
+        <button class="filter-chip" onclick="filterEvak(this,'stasiun')">Stasiun</button>
+        <button class="filter-chip" onclick="filterEvak(this,'pusat perbelanjaan')">Pusat Perbelanjaan</button>
+      </div>
+      <div id="evak-list"></div>
+    </div>
+  </div>
+
+  <div class="page" id="page-5">
+    <div class="page-content">
+      <div class="section-title"><i class="fa-regular fa-address-book"></i> Kontak Darurat</div>
+      <div class="section-sub">Hubungi segera saat kondisi darurat banjir.</div>
+      <div class="kontak-grid">
+        <a href="tel:113" class="kontak-card damkar">
+          <div class="kontak-icon"><i class="fa-solid fa-fire"></i></div>
+          <div class="kontak-name">DAMKAR</div>
+          <div class="kontak-num">113</div>
+        </a>
+        <a href="tel:119" class="kontak-card ambulans">
+          <div class="kontak-icon"><i class="fa-solid fa-truck-medical"></i></div>
+          <div class="kontak-name">AMBULANS</div>
+          <div class="kontak-num">119</div>
+        </a>
+        <a href="tel:117" class="kontak-card sar">
+          <div class="kontak-icon"><i class="fa-solid fa-person-drowning"></i></div>
+          <div class="kontak-name">SAR / BPBD</div>
+          <div class="kontak-num">117</div>
+        </a>
+        <a href="tel:110" class="kontak-card polisi">
+          <div class="kontak-icon"><i class="fa-solid fa-handcuffs"></i></div>
+          <div class="kontak-name">POLISI</div>
+          <div class="kontak-num">110</div>
+        </a>
+      </div>
+      <div class="kontak-tambahan">
+        <a href="tel:026021222" class="kontak-list-item">
+          <div><div class="kontak-list-name">BPBD Kab. Sumedang</div><div class="kontak-list-sub">Badan Penanggulangan Bencana Daerah</div></div>
+          <div class="kontak-list-num">0260-21222</div>
+        </a>
+        <a href="tel:0260221220" class="kontak-list-item">
+          <div><div class="kontak-list-name">RSUD Sumedang</div><div class="kontak-list-sub">RS terdekat dari Jatinangor</div></div>
+          <div class="kontak-list-num">0260-221220</div>
+        </a>
+        <a href="tel:02287700900" class="kontak-list-item">
+          <div><div class="kontak-list-name">Puskesmas Jatinangor</div><div class="kontak-list-sub">Jl. Raya Jatinangor No.51</div></div>
+          <div class="kontak-list-num">022-87700900</div>
+        </a>
+        <a href="tel:026021414" class="kontak-list-item">
+          <div><div class="kontak-list-name">PMI Kab. Sumedang</div><div class="kontak-list-sub">Palang Merah Indonesia</div></div>
+          <div class="kontak-list-num">0260-21414</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+<nav id="bottom-nav">
+  <span class="nav-indicator" id="nav-indicator"></span>
+
+  <button class="nav-btn active" onclick="showPage(1,this)">
+    <div class="nav-icon"><i class="fa-solid fa-map-location-dot"></i></div>Peta Zona
+  </button>
+  <button class="nav-btn" onclick="showPage(2,this)">
+    <div class="nav-icon"><i class="fa-solid fa-location-arrow"></i></div>Titik Lokasi
+  </button>
+  <button class="nav-btn" onclick="showPage(3,this)">
+    <div class="nav-icon"><i class="fa-solid fa-person-walking-luggage"></i></div>Persiapan
+  </button>
+  <button class="nav-btn" onclick="showPage(4,this)">
+    <div class="nav-icon"><i class="fa-solid fa-tent"></i></div>Pengungsian
+  </button>
+  <button class="nav-btn" onclick="showPage(5,this)">
+    <div class="nav-icon"><i class="fa-solid fa-phone"></i></div>Darurat
+  </button>
+</nav>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
