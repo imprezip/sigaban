@@ -50,8 +50,8 @@ function formatHarga(harga) {
 export async function initMap() {
   mapObj = L.map('map', { zoomControl: false, attributionControl: false }).setView([-6.9265, 107.778], 13);
 
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-     attribution: '&copy; Esri, HERE, Garmin, &amp; OpenStreetMap contributors',
+  L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; Stadia Maps &copy; OpenMapTiles &copy; OpenStreetMap contributors',
       maxZoom: 19
   }).addTo(mapObj);
 
