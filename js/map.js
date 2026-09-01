@@ -50,7 +50,7 @@ function formatHarga(harga) {
 export async function initMap() {
   mapObj = L.map('map', { zoomControl: false, attributionControl: false }).setView([-6.9265, 107.778], 13);
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  L.tileLayer('https://{s}.tile.openstreetmap.org/dark_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; OpenStreetMap &amp; CartoDB',
     subdomains: 'abcd',
     maxZoom: 19
