@@ -50,10 +50,9 @@ function formatHarga(harga) {
 export async function initMap() {
   mapObj = L.map('map', { zoomControl: false, attributionControl: false }).setView([-6.9265, 107.778], 13);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap &amp; CartoDB',
-    subdomains: 'abcd',
-    maxZoom: 19
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+     attribution: '&copy; Esri, HERE, Garmin, &amp; OpenStreetMap contributors',
+      maxZoom: 19
   }).addTo(mapObj);
 
   try {
