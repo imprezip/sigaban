@@ -49,10 +49,10 @@ function formatHarga(harga) {
 
 export async function initMap() {
   mapObj = L.map('map', { zoomControl: false, attributionControl: false }).setView([-6.9265, 107.778], 13);
-
-  L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; Stadia Maps &copy; OpenMapTiles &copy; OpenStreetMap contributors',
-      maxZoom: 19
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+      className: 'dark-map-tiles'
   }).addTo(mapObj);
 
   try {
