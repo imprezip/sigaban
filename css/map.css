@@ -3,6 +3,10 @@
   min-height: 296px;
 }
 
+.dark-map-tiles {
+  filter: invert(100%) hue-rotate(180deg) brightness(0.85) contrast(90%) saturate(70%);
+}
+
 .legend-strip {
   background: var(--bg2);
   border-top: 1px solid var(--border);
